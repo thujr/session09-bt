@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /* BÀI 1.Cho một mảng có sẵn.
+      Tìm phần tử xuất hiện nhiều nhất và in ra chúng */
+      let numbers = prompt("Mời nhập số nguyên cách nhau bởi dấu ,");
+      let mang = numbers.split(",");
+      let dem = {};
+      for (let i = 0; i < mang.length; i++) {
+        if (dem[mang[i]]) {
+          dem[mang[i]]++;
+        } else {
+          dem[mang[i]] = 1;
+        }
+      }
+      console.log("Đếm", dem);
+      let phanTuXuatHienNhieuNhat;
+      let soLanXuatHienNhieuNhat = 0;
+      for (let key in dem) {
+        /* let dem={
+              1:3,
+              2:2,
+              3:4,
+          };
+          for (let  key in dem) {
+          //    console.log("key" , key); in ra key:1,2,3
+               console.log('value' dem[key]); in ra gias trị tương đương :3,2,4
+          }
+           */
+        if (dem[key] > soLanXuatHienNhieuNhat) {
+          phanTuXuatHienNhieuNhat = key;
+          soLanXuatHienNhieuNhat = dem[key];
+        }
+      }
+      console.log(
+        "Phần tử xuất hiện nhiều nhất là: " + phanTuXuatHienNhieuNhat
+      );
+      console.log(
+        "Số lần phần tử lớn nhất xuất hiện: " + soLanXuatHienNhieuNhat
+      );
+
+      /* BÀI 2.Loại bỏ các phần tử trùng nhau trong mảng */
+      //    Sử dụng Set: "Set chỉ cho bạn lưu trữ giá trị duy nhất".
+      //   cú pháp : new Set([iterable]);
+      let input = prompt("Nhập số cách nhau bởi dấu ,");
+      let n = input.split(",");
+      console.log("In ra mảng", n);
+      let outputSet = new Set(n);
+      let outputArray = Array.from(outputSet);
+      console.log("kết quả", outputArray);
+
+      //   Sử dụng indexOf: trả về vị trí (index) đầu tiên nó tìm thấy của phần tử được cung câps từ mảng
+      //   tìm kiếm giá trị trong mảng dựa vào giá trị của vị trí khóa của phần tử nếu tìm thấy
+      //   và trả về -1 nếu không tìm thấy.
+      //   cú pháp : array.indexOf(giá trị phần tử cần tìm, vị trí bắt đầu tièm kiếm)
+      //   không thể sử dụng hàm index nếu trong mảng là Object
+      let input1 = prompt("Nhập số cách nhau bởi dấu ,");
+      let n1 = input1.split(",");
+      let output1 = [];
+      for (let k = 0; k < n1.length; k++) {
+        if (output1.indexOf(n1[k]) === -1) {
+          output1.push(n1[k]);
+        }
+      }
+      console.log("kết quả:", output1);
+
+      /* BÀI 3.Viết chương trình vào đoạn text, in ra text mới với chư
+      các đầu tiên viết hoa */
+      //  *  charAt(index) là một phương thức của lớp String được sử dụng để
+      // truy xuất kí tự tại một chỉ số cụ thể trong chuỗi. phương thức này
+      // trả vè kí tự tại vị trí được chỉ định dưới dạng char.
+      // cú pháp của charAt: string.charAt(index);
+      //   index là chỉ số của kí tự trả về
+      //   +nếu index là 0 thì kí tự ở vị trị đâuf tiên được trả về
+      //   +nếu index là 1 thì kí tự ở vị trí thứ hai được trả về
+      // * slice(strat,end) là một hàm của đối tượng String , nó cho phép lấy một
+      // phần của chuỗi bằng cách định vị hai vị trí bắt đâuf và kết thúc cần
+      // lấy. nó trả về chuỗi mới, không thay đổi giá trị của chuỗi gôc
+      let text = prompt("Mời nhập văn bản: ");
+      let arr = text.split(" ");
+      console.log("Đoạn Text", arr);
+      let output = "";
+
+      for (let j = 0; j < arr.length; j++) {
+        if (arr[j] !== "") {
+          output += arr[j].charAt(0).toUpperCase() + arr[j].slice(1) + " ";
+        }
+      }
+      console.log("Output :", output);
+    </script>
+  </body>
+</html>
